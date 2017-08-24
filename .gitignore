@@ -1,0 +1,3 @@
+.envrc.local
+dist/
+node_modules/

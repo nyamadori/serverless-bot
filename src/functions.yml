@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  ExecBot:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../dist
+      Handler: index.execBot
+      Runtime: nodejs6.10
+      Policies: AmazonDynamoDBFullAccess
+      Environment:
+        Variables:
+          S3_BUCKET: lambda.nyamadori.me
+          SLACK_BOT_TOKEN: xoxp-21257486999-21258277536-230825786693-4e3bf12315166d052380b4c2aaf0b581
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /slack_events
+            Method: post

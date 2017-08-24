@@ -1,0 +1,32 @@
+#!/bin/bash
+
+CMDNAME=`basename $0`
+USAGE="Usage: $CMDNAME DEPLOY_ENV FUNCTION_NAME"
+
+deploy_env=$1
+function_name=$2
+
+if [ -z $deploy_env ] || [ -z $function_name ]; then
+  echo $USAGE
+  exit 1
+fi
+
+src_template_file="src/functions.yml"
+dist_template_file="dist/functions.yml"
+dist_dir=`dirname $dist_template_file`
+
+mkdir -p $dist_dir
+cp -r node_modules/ dist/node_modules
+
+aws cloudformation package \
+  --template-file $src_template_file \
+  --output-template-file $dist_template_file \
+  --s3-bucket $S3_BUCKET
+
+project_name=`basename \`pwd\``
+stack_name="$project_name-$deploy_env"
+
+aws cloudformation deploy \
+  --template-file $dist_template_file \
+  --stack-name $stack_name \
+  --capabilities CAPABILITY_IAM
