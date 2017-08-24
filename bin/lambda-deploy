@@ -11,12 +11,12 @@ if [ -z $deploy_env ] || [ -z $function_name ]; then
   exit 1
 fi
 
-src_template_file="src/functions.yml"
-dist_template_file="dist/functions.yml"
+src_template_file="src/backend/functions.yml"
+dist_template_file="dist/backend/functions.yml"
 dist_dir=`dirname $dist_template_file`
 
 mkdir -p $dist_dir
-cp -r node_modules/ dist/node_modules
+cp -r node_modules/ dist/backend/node_modules
 
 aws cloudformation package \
   --template-file $src_template_file \

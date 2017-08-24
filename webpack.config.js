@@ -1,7 +1,10 @@
 const path = require('path')
 const { CheckerPlugin } = require('awesome-typescript-loader')
 
-const commonConfig = {
+module.exports = {
+  target: 'web',
+  entry: './src/frontend/index.ts',
+
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
@@ -35,5 +38,3 @@ const serverConfig = Object.assign(commonConfig, {
 
   devtool: 'inline-source-map',
 })
-
-module.exports = [serverConfig]
