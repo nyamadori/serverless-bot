@@ -1,0 +1,14 @@
+{
+  "name": "serverless-bot-farm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "nyamadori <nyamadorig@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^8.0.27",
+    "typescript": "^2.5.2"
+  },
+  "dependencies": {
+    "@slack/client": "^3.12.0"
+  }
+}

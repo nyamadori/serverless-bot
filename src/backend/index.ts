@@ -29,47 +29,4 @@ export async function execBot (data, context, callback) {
   }
 
   callback(null, { statusCode: 200, body: JSON.stringify({ status: 'ok' }) });
-
-  // const loadBot = new Function('bot', data.bot.program);
-  // const bot = {
-  //   brain: {
-  //     get: (key, callback) => {
-  //       const query = {
-  //         TableName: 'bot_brains',
-  //         Key: {
-  //           bot_id: '1'
-  //         },
-  //       };
-  //
-  //       documentClient.get(query, (err, res) => callback(err, res.Item.data[key]));
-  //     },
-  //
-  //     set: (key, value, callback) => {
-  //       const newItem = {
-  //         bot_id: '1',
-  //         data: {}
-  //       };
-  //
-  //       newItem.data[key] = value;
-  //
-  //       const query = {
-  //         TableName: 'bot_brains',
-  //         Item: newItem
-  //       };
-  //
-  //       documentClient.put(query, callback);
-  //     }
-  //   }
-  // };
-  //
-  // loadBot(bot);
-  // bot[data.event.name].apply(this, data.event.args);
-  //
-  // bot.brain.get('counter', (err, value) => {
-  //   bot.brain.set('counter', value + 1, (err, res) => {
-  //     console.log(err, data);
-  //   })
-  // })
-  //
-  // callback(null, { result: 'ok', brain: bot.brain });
 }
