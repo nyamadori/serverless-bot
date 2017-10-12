@@ -1,12 +1,11 @@
 #!/bin/bash
 
 CMDNAME=`basename $0`
-USAGE="Usage: $CMDNAME DEPLOY_ENV FUNCTION_NAME"
+USAGE="Usage: $CMDNAME DEPLOY_ENV"
 
 deploy_env=$1
-function_name=$2
 
-if [ -z $deploy_env ] || [ -z $function_name ]; then
+if [ -z $deploy_env ]; then
   echo $USAGE
   exit 1
 fi
