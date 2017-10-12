@@ -29,7 +29,7 @@ stack_name="$project_name-$deploy_env"
 aws cloudformation deploy \
   --template-file $dist_template_file \
   --stack-name $stack_name \
-  --capabilities CAPABILITY_IAM
+  --capabilities CAPABILITY_IAM \
   --parameter-overrides \
     "BucketName=${BUCKET_NAME}" \
     "SlackBotToken=${SLACK_BOT_TOKEN}"
