@@ -32,4 +32,4 @@ aws cloudformation deploy \
   --capabilities CAPABILITY_IAM
   --parameter-overrides \
     "BucketName=${BUCKET_NAME}" \
-    "SlackBotToken=${SLACK_BOT_TOKEN}" \
+    "SlackBotToken=${SLACK_BOT_TOKEN}"
