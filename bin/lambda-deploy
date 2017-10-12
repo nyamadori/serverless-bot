@@ -17,6 +17,8 @@ dist_dir=`dirname $dist_template_file`
 mkdir -p $dist_dir
 cp -r node_modules/ dist/backend/node_modules
 
+yarn run tsc
+
 aws cloudformation package \
   --template-file $src_template_file \
   --output-template-file $dist_template_file \
