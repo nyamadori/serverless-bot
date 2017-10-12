@@ -10,11 +10,17 @@ Resources:
       Policies: AmazonDynamoDBFullAccess
       Environment:
         Variables:
-          S3_BUCKET: lambda.nyamadori.me
-          SLACK_BOT_TOKEN: xoxp-21257486999-21258277536-230825786693-4e3bf12315166d052380b4c2aaf0b581
+          S3_BUCKET: !Ref BucketName
+          SLACK_BOT_TOKEN: !Ref SlackBotToken
       Events:
         GetResource:
           Type: Api
           Properties:
             Path: /slack_events
             Method: post
+
+Parameters:
+  SlackBotToken:
+    Type: String
+  BucketName:
+    Type: String
