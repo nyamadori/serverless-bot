@@ -3,6 +3,13 @@ import Message from './message'
 import * as WebClient from '@slack/client'
 
 export async function execBot (data, context, callback) {
+  const slackRetryReason = data.headers['X-Slack-Retry-Reason']
+
+  if (slackRetryReason === 'http_timeout') {
+    console.log('Ignore retrying request from Slack')
+    return callback(null, { statusCode: 200 })
+  }
+
   const body = JSON.parse(data.body)
 
   console.log('execBot:', body)
